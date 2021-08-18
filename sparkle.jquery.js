@@ -92,7 +92,7 @@
         if (!$.destroySparkle[id]) {
           window.setTimeout(function() {
             placeStar(false);
-          }, settings.pause);
+          }, (typeof settings.pause === 'function') ? settings.pause() : settings.pause);
         } else {
           $star.remove();
         }
@@ -106,7 +106,7 @@
     if (!$.destroySparkle[id] && options !== "destroy") {
       window.setTimeout(function() {
         placeStar(true);
-      }, settings.delay);
+      }, (typeof settings.delay === 'function') ? settings.delay() : settings.delay);
 
       this.data("sparkle-id", id);
     }
